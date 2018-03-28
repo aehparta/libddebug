@@ -104,6 +104,8 @@ if ! autoreconf --install --force; then
 	exit 1
 fi
 
+ln -s README.md README
+
 case "$1" in
 	deb)
 		bash ./debian/create-deb-arch.sh
