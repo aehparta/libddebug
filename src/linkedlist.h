@@ -30,7 +30,6 @@ do { \
 	last = item; \
 } while(0)
 
-
 /**
  * Insert item into queue using field in struct to determine correct position.
  * field should be integer or similar and the item is inserted after first field
@@ -70,6 +69,26 @@ do { \
 	} \
 } while(0)
 
+/**
+ * Get item from end of the queue.
+ */
+#define LL_POP(first, last, item) \
+do { \
+    item = NULL; \
+    if (last != NULL) \
+    { \
+        item = last; \
+        if (last->prev == NULL) \
+        { \
+            first = NULL; \
+            last = NULL; \
+        } \
+        else { \
+            last = last->prev; \
+            last->next = NULL; \
+        } \
+    } \
+} while (0)
 
 /**
  * Get item from top of the queue.
@@ -91,7 +110,6 @@ do { \
 		} \
 	} \
 } while (0)
-
 
 /**
  * Count items in list.
